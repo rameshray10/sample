@@ -1,0 +1,59 @@
+<div class="container-fluid mainbody">
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Customer Profile Id</h4>
+                <button type="button" class="btn close" aria-label="Close"(click)="crossClose()" ><span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="card" style="margin: 10px; ">
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="custname" class="">Enter Customer Name:</label>
+                            <input type="text" name="custNAme" id="custName" class="form-control" [value]="choice"
+                                [formControl]="choice">
+                            <hr />
+                            <input type="button" value="Search" (click)="searchCustName(choice.value)"
+                                class="btn btn-primary">
+                        </div>
+                    </div>
+                    <div [hidden]="!hideMe">
+                    <table class="table table-striped" style="border:1px black solid;margin-top:20px;">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="col-md-4">#</th>
+                                <th class="col-md-4">CustomerID</th>
+                                <th class="col-md-3">Customer Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of accountDetails">
+                                <td><input type="radio" name="id" id="id" [value]="item.CustomerId"
+                                        (click)="customerselect(item.CustomerId,item.AccountNumber)"></td>
+                                <td><label name="custometId" id="CustomerId" itemvalue.id="item.CustomerId"
+                                        [id]="item.CustomerId"> {{item.CustomerId}}</label></td>
+                                <td><label name="customerName" id="CustNAme">{{item.PrimaryAccountOwnerName}}</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="col-md-12">
+                        <input type="button" value="Ok" 
+                        [class.disabled]="choice.invalid"
+                         [disabled]="choice.invalid"
+                            style="margin-bottom: 20px;margin-top:20px;"
+                            (click)="closeModel()"
+                            class="btn btn-primary">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

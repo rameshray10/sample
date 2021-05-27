@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top" style="padding-top: 0.0rem;padding-bottom: 0.0rem;">
+  <!-- navigate to Dashboard -->
+  <a class="navbar-brand" routerLink="/app/dashboard" style="padding:0.4em;">ABC Bank
+  </a> 
+
+  <button class="navbar-toggler hidden-sm-up" type="button"
+   (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault"
+    aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavbarCollapsed"
+   class="collapse navbar-collapse justify-content-end" id="navbarsDefault">
+   <a style="color:white;">  Welcome  {{username}} ( {{customerId || 'User' }} )</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="id01"  ngbDropdownToggle>Profile</a>
+        <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+          <a class="dropdown-item" routerLink="/app/registration">Add UserProfile</a>
+           <a class="dropdown-item" (click)="navRegistration()">Edit Profile</a><!-- routerLink="/registration?id={{customerId}}" -->
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="id02"  ngbDropdownToggle>AccountDetails</a>
+        <div class="dropdown-menu" aria-labelledby="id02" ngbDropdownMenu>
+          <a class="dropdown-item" routerLink="/app/accountOpening">Open New Accout</a>
+          <!-- <a class="dropdown-item" routerLink="/accountOpening/{{customerId}}">Edit AccountDetails</a>
+          <a class="dropdown-item" >JS</a> -->
+        </div>
+      </li>
+      <li class="nav-item nav-link"><a routerLink="/app/search" 
+        style="color:white !important;text-decoration: none !important;" >Search</a></li>
+    </ul>
+  </div>
+</nav>

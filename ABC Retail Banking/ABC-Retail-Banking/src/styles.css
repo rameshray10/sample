@@ -1,0 +1,27 @@
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+/* You can add global styles to this file, and also import other style files */
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+  
+  .mainbody{
+    margin-top:5%;
+  }
+  /* You can add global styles to this file, and also import other style files */
+a { cursor: pointer }
+
+.app-container {
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.btn-delete-user {
+    width: 40px;
+    text-align: center;
+    box-sizing: content-box;
+}

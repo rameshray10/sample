@@ -1,0 +1,21 @@
+export const  urlConst={
+    Base_Url:"http://localhost:58452/api/",
+    Get_Authenticated :"CustomerInformation/GetAuthenticated?uname=",
+    Get_CustomerInfo:"CustomerInformation/Get",
+    Get_TopTransaction:"Transaction/GetTopTransactions?customerId=",
+    Get_Transaction:"Transaction/Get",
+    Get_PeriodTransaction:"Transaction/GetPeriodTransactions?customerId=",
+    Get_Search:"Transaction/Search?accountName={0}&accountNumber={1}&clientName={2}",
+    Post_CustomerInfo:"CustomerInformation/Post",
+    Post_Transaction:"Transaction/Post",
+    Get_AccountDetails:"AccountDetails/Get",
+    Get_AccountDetailsbyCustId:"AccountDetails/GetbyCustId?id=",
+    Get_AccountDetailsbyName:"AccountDetails/GetbyName?Name=",
+    Post_AccountDetails:"AccountDetails/Post",
+    Put_UserInfo:"",
+    Get_UserDetails:"UserDetails/Get",
+    Get_UserById:"UserDetails/GetById?fname=",
+    Post_UserDetails:"UserDetails/Post",
+    Put_UserDetails:"UserDetails/Put?id=",
+   Get_SearchResults: "Transaction/getSearchResults?queryStrings="
+}

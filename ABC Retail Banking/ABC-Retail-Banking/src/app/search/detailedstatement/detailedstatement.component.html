@@ -1,0 +1,124 @@
+<div class="mainbody container-fluid ">
+    <div class="align-items-center" #content id="content">
+        <div class="card-header">
+            <strong> Detailed Statement for {{customerDetail.UserName}} ( {{customerDetail.CustomerId}} )</strong>
+        </div>
+        <hr />
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;"> Account Number </td>
+                        <td> <select class="form-control" name="title" id="title" required>
+                                <option disabled>Select Title</option>
+                                <option value="mr">{{customerDetail.CustomerId}} (INR) - {{customerDetail.UserName}}
+                                </option>
+                                <!-- <option value="mrs">Mrs</option>
+                        <option value="miss">Miss</option>
+                        <option value="ms">Ms</option> -->
+                            </select>
+                            <div class="invalid-feedback">
+                                <div>Title is required</div>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">
+                            <input type="radio" name="tdate" id="tdate" [(ngModel)]="radioSelected" value="Tdate">
+                            Transaction Date
+                        </td>
+                        <td> <input type="date" name="effectiveDate" id="eff" class="form-control" #fromDate required>
+                        </td>
+                        <td> <input type="date" name="effectiveDate" id="eff" class="form-control" #toDate required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">
+                            <input type="radio" name="tdate" id="tdate" [(ngModel)]="radioSelected"
+                                value="Tperiod">Transaction Period
+                        </td>
+                        <td> <select class="form-control" name="title" id="title" required #period>
+                                <option disabled>Select Title</option>
+                                <option value="today">Today</option>
+                                <option value="1">last 1 month</option>
+                                <option value="2">last 2 months</option>
+                                <option value="3">last 3 months</option>
+                                <option value="6">last 6 months</option>
+                                <option value="12">last 1 year</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                <div>Title is required</div>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="row col-md-12" #content id="content">
+            <div class="col-md-4">
+                <button type="button" value="PDF" class="btn btn-secondary" (click)="clearall()">Clear</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" value="PDF" class="btn btn-primary"
+                    (click)="getStatement(fromDate.value,toDate.value,period.value)">View Statement</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" value="PDF" class="btn btn-primary" routerLink="/app/ministatement">Mini
+                    Statement</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" value="PDF" class="btn btn-primary" (click)="ComingSoon('This Feature is ')">Fixed deposit</button>
+            </div>
+            <div class="col-md-2">
+                Download as
+                <button type="button" value="PDF" class="btn btn-primary" (click)="pdfDownload()">PDF</button>
+            </div>
+            <div  [hidden]="!hideMe">
+            <div style="font-weight: bold;">
+                Transaction List {{customerDetail.UserName}} - {{customerDetail.CustomerId}}
+            </div>
+
+            <table class="table table-fixed table-striped" style="border:1px black solid;">
+                <thead class="table-light">
+                    <tr>
+                        <th class="col-md-1">Serial Number</th>
+                        <th class="col-md-2">Transaction Date</th>
+                        <th class="col-md-1">Cheque number</th>
+                        <th class="col-md-2">Transaction Remark</th>
+                        <th class="col-md-2">Withdrawal Amount (INR) </th>
+                        <th class="col-md-2">Deposit Amount (IMR)</th>
+                        <th class="col-md-2">Balance Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of transaction; let i = index">
+                        <td><label name="id" id="id">{{i+1}}</label></td>
+                        <td><label name="custometId" id="CustomerId" itemvalue.id="item.CustomerId">
+                                {{item.TransactionDate | date: 'd-M-y'}}</label></td>
+                        <td><label name="customerName" id="CustNAme"
+                                *ngIf="item.ChecqueBookNumber  != 0">{{item.ChecqueBookNumber }}</label></td>
+                        <td><label name="customerName" id="CustNAme">{{item.TransactionRemarks}}</label></td>
+                        <td><label name="customerName" id="CustNAme"
+                                *ngIf="item.TransactionType == 2">{{item.TransactionAmount}}</label></td>
+                        <td><label name="customerName" id="CustNAme" *ngIf="item.TransactionType == 1">
+                                {{item.TransactionAmount}}</label></td>
+                        <td><label name="customerName" id="CustNAme">{{item.CurrentBalance | number:'1.2-2'}}</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            <!-- Uncomment this to use Ag Grid-->
+            <!-- <ag-grid-angular
+    style="width: 500px; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData | async"
+    [columnDefs]="columnDefs"
+>
+</ag-grid-angular> -->
+        </div>
+    </div>
+</div>

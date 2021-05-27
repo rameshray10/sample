@@ -1,0 +1,181 @@
+<div class="mainbody">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-5"></div>
+         <div class="col-md-3"><!--CustomerId : {{customerId}} -->
+            <div>{{rxTime | date: 'fullDate' }} {{ rxTime | date: 'hh:mm:ss a' }}</div>
+        </div>
+    </div>
+    <div class="container-fluid row">
+        <div class="col-md-2 ">
+            <div>
+                <div class="card-header">Your Financial Journey</div>
+                <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                width: 95%;
+                text-align: center;">
+                    <label for="" style="font-size: smaller;"> <strong> Here are next steps for you</strong></label>
+                    <div>
+                        <a (click)="ComingSoon('Financial Journey will be ')" style="font-size: x-small;">
+                            Explore now</a>
+                    </div>
+                </div>
+
+                <!-- <div class="card-body"></div>
+                <div class="card-body"> <a (click)="ComingSoon('Financial Journey will be ' )"> Explore now</a></div> -->
+            </div>
+            <div class="row">
+                <div class="rounded card-header"><a> My Rewards</a></div>
+                <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                width: 95%;
+                text-align: center;">
+                    <label for="" style="font-size: smaller;"> <strong> Open mWish!</strong></label>
+                    <div>
+                        <a (click)="ComingSoon(' ')" style="font-size: x-small;">
+                             Win Upto
+                            Rs.55,55,000 </a>
+                    </div>
+                </div>
+                <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                width: 95%;
+                text-align: center;">
+                    <label for="" style="font-size: smaller;"> <strong> Spin a wheel </strong></label>
+                    <div>
+                        <a (click)="ComingSoon(' ')" style="font-size: x-small;"> 
+                            Win Upto
+                            Rs.50,00,000 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="BalanceCard">
+                <div class="row">
+                    <div class="col-md-6" style="background-color: white;">
+                        <div class="card-header" style="font-size: larger;font-weight: 400;">
+                            Total Balance (Savings + Deposit)
+                        </div>
+                        <div class="card-body">
+                            <h1>₹ {{BalanceAmt  | number:'1.2-2'}}</h1>
+                            <h5> Upgrade your Debit Card</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="background-color: white;">
+                        <div class="card-header" style="font-size: larger;font-weight: 400;">
+                            Credit Card Balance
+                        </div>
+                        <div class="card-body">
+                            <h1>₹ 00.00</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="background-color: white;">
+                        <div class="card-header" style="font-size: larger;font-weight: 400;">
+                            Savings
+                        </div>
+                        <div class="card-body">
+                            <h1>₹ {{BalanceAmt  | number:'1.2-2'}}</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="background-color: white;">
+                        <div class="card-header" style="font-size: larger;font-weight: 400;">
+                            Start new Deposit today
+                        </div>
+                        <div class="card-body">
+                            <h1>₹ 00.00</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 adv" >
+                    <a routerLink="/app/ministatement"> <strong> View Bank
+                            Statement</strong></a>
+                </div>
+                <div class="col-md-3 adv" >
+                    <a (click)="ComingSoon('Recharge option is ')">
+                        <strong>Recharge now</strong> </a>
+                </div>
+                <div class="col-md-3 adv">
+                    <a routerLink="/app/fundTransfer">
+                        <strong>Fund Transfer </strong> </a>
+                </div>
+                <div class="col-md-3 adv">
+                    <a (click)="ComingSoon('Pay Bills is ')">
+                        <strong> Pay Bills</strong> </a>
+                </div>
+            </div>
+            <hr />
+            <div class="row " style="text-align: center;">
+                <div class="col-md-6" style="border-top: 1px solid red;
+                background-color: #c1c1c1;"><strong> Recent Transaction</strong></div>
+                <div class="col-md-6" style="background-color:#f7f7f7;"><strong>Frequent Internet
+                        Transaction</strong></div>
+            </div>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-2" style="background-color: thistle;" *ngFor="let item of transaction">
+                    {{item.TransactionDate | date: 'd-M-y' }}<div>₹ {{item.TransactionAmount  | number:'1.2-2'}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <div class="row">
+                    <div class="rounded card-header">CIBIL score range</div>
+                    <div class="col-md-12 rounded-pill adv" style="margin-top: 1em !important;
+                width: 95%;
+                text-align: center;">
+                        <label for="" style="font-size: smaller;"> <strong> 781 -831 </strong></label>
+
+                        <div>
+                            <a (click)="ComingSoon('CIBIL Report option ')" style="font-size: smaller;"> Get Free
+                                Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="rounded card-header"><a> My Loans</a></div>
+                    <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                    width: 95%;
+                    text-align: center;">
+                        <label for="" style="font-size: smaller;"> <strong> Freedom from Renting!</strong></label>
+                        <div>
+                            <a (click)="ComingSoon('')" style="font-size: x-small;"> Upto
+                                Rs.55,55,000 instant loan. </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                    width: 95%;
+                    text-align: center;">
+                        <label for="" style="font-size: smaller;"> <strong> Buy a dream home </strong></label>
+                        <div>
+                            <a (click)="ComingSoon('')" style="font-size: x-small;"> Loan Upto
+                                Rs.50,00,000. </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="rounded card-header"><a> My investments</a></div>
+                    <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                    width: 95%;
+                    text-align: center;">
+                        <label for="" style="font-size: smaller;"> <strong> Mutual Funds</strong></label>
+                        <div>
+                            <a (click)="ComingSoon('')" style="font-size: x-small;"> Simple and Hassle free investment </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12  rounded-pill adv" style="margin-top: 1em !important;
+                    width: 95%;
+                    text-align: center;">
+                        <label for="" style="font-size: smaller;"> <strong> Public Provident Funds </strong></label>
+                        <div>
+                            <a (click)="ComingSoon('')" style="font-size: x-small;"> Open investment and paperless account </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

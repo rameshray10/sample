@@ -1,0 +1,101 @@
+<div class="container-fluid mainbody">
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+
+            <div class="card" style="margin: 10px; ">
+                <div class="card-header" style="font-size: larger;font-weight: 400;">
+                    Account Creation form
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label>Account Type :</label>
+                                <select class="form-control" formControlName="AccountTypeId" name="AccountTypeId"
+                                    id="AccountTypeId" [ngClass]="{ 'is-invalid':submitted && f.AccountTypeId.errors}"
+                                    required>
+                                    <option>Select AccountType</option>
+                                    <option value="10001">Savings</option>
+                                    <option value="10003">Current</option>
+                                    <option value="3003">CheckingAccount</option>
+                                </select>
+                                <div *ngIf="submitted && f.AccountTypeId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.AccountTypeId.errors.required">Title is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Select Role :</label>
+                                <select class="form-control" formControlName="AccessType" name="AccessType"
+                                    id="AccessType" [ngClass]="{ 'is-invalid':submitted && f.AccessType.errors}"
+                                    required>
+                                    <option>Select AccessType</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+
+                                </select>
+                                <div *ngIf="submitted && f.AccessType.errors" class="invalid-feedback">
+                                    <div *ngIf="f.AccessType.errors.required">Role Type is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Primary Owner Name:</label>
+                                <input class="form-control" formControlName="PrimaryAccountOwnerName" type="text"
+                                    name="PrimaryAccountOwnerName"
+                                    [ngClass]="{ 'is-invalid':submitted && f.PrimaryAccountOwnerName.errors }" required>
+                                <div *ngIf="submitted && f.PrimaryAccountOwnerName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.PrimaryAccountOwnerName.errors.required">PrimaryAccountOwnerName is
+                                        required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label>InitialBalance :</label>
+                                <input type="number" formControlName="InitialBalance" class="form-control"
+                                    [ngClass]="{'is-invalid':submitted && f.InitialBalance.errors}" required>
+                                <div *ngIf="submitted && f.InitialBalance.errors" class="invalid-feedback">
+                                    <div *ngIf="f.InitialBalance.errors.required">InitialBalance is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label>CustomerId :</label>
+                                <input type="text" formControlName="CustomerId" class="form-control"
+                                    [ngClass]="{'is-invalid':submitted && f.CustomerId.errors}" required>
+                                <div *ngIf="submitted && f.CustomerId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.CustomerId.errors.required">CustomerId is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4 text-center">
+                                <label>Click below button for CustomerId generation:</label>
+                                <input type="button" value="Click Me" (click)="openPopup()" class="btn btn-primary">
+                            </div>
+                            <!-- <div class="form-group col-sm-4">
+                                <label>Email :</label>
+                                <input type="email" formControlName="Email" class="form-control"
+                                    [ngClass]="{'is-invalid': f.Email.errors}" required>
+                                <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Email.errors.required">Email is required</div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class=" form-group text-center col-md-12" style="margin-top: 5px;">
+
+                                <input [disabled]="loading" style="margin-right: 5px;" type="submit"
+                                    class="btn btn-primary mr-1" value="Register">
+
+                                <input type="reset" class="btn btn-secondary" (click)="onReset()" value="Cancel">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

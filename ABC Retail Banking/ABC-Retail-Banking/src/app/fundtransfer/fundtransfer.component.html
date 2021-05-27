@@ -1,0 +1,94 @@
+<div class="mainbody container-fluid">
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+
+            <div class="card" style="margin: 10px; ">
+                <div class="card-header" style="font-size: larger;font-weight: 400;">
+                    Fund Transfer form
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="form-group col-sm-8">
+                                <label>Select Payee :</label>
+                                <select class="form-control" formControlName="ToAccount"
+                                    [ngClass]="{ 'is-invalid':  submitted &&  f.ToAccount.errors}" required>
+                                    <option value="1">Select Payee</option>
+                                    <option *ngFor="let item of accountDetails" [value]="item.AccountNumber">
+                                        {{item.PrimaryAccountOwnerName}} ( {{item.AccountNumber}})</option>
+                                </select>
+                                <div *ngIf="submitted && f.ToAccount.errors" class="invalid-feedback">
+                                    <div *ngIf="f.ToAccount.errors.required">Payee is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-1 position-relative">
+                                <div class="position-absolute bottom-0 start-0" style="bottom: 10px !important;"> OR
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-3 position-relative">
+                                <input type="button" value="+ ADD NEW PAYEE"
+                                    class="btn btn-primary position-absolute bottom-0 start-0">
+                            </div>
+
+                        </div>
+                        Enter Transaction Details
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label>Transfer From :</label>
+                                <select class="form-control" formControlName="FromAccount"
+                                    [ngClass]="{ 'is-invalid':  submitted && f.FromAccount.errors}" required>
+                                    <option>Select Payee</option>
+                                    <option value="1" [value]="loggedInUserInfo.CustomerId">
+                                        {{loggedInUserInfo.UserName}} ( {{loggedInUserInfo.CustomerId}} )</option>
+                                </select>
+                                <div *ngIf="submitted && f.FromAccount.errors" class="invalid-feedback">
+                                    <div *ngIf="f.FromAccount.errors.required">From Account is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Amount :</label>
+                                <input type="text" formControlName="TransactionAmount" class="form-control"
+                                    [ngClass]="{'is-invalid':  submitted &&  f.TransactionAmount.errors}" required>
+                                <div *ngIf="submitted && f.TransactionAmount.errors" class="invalid-feedback">
+                                    <div *ngIf="f.TransactionAmount.errors.required">
+                                        TransactionAmount is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Remarks (Optional) :</label>
+                                <input type="text" formControlName="TransactionRemarks" class="form-control"
+                                    [ngClass]="{'is-invalid':  submitted &&  f.TransactionRemarks.errors}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-4" style="font-size: x-small;
+                            font-weight: 600;">Total available amount is
+                                ₹ {{BalanceAmt | number:'1.2-2'}} as on {{ today | date:'dd-MMM-Y hh:mm:ss a ' }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label>Payment Date :</label>
+                                <input type="date" formControlName="TransactionDate" class="form-control"
+                                    [ngClass]="{'is-invalid': submitted && f.TransactionDate.errors}">
+                            </div>
+
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-md-12" style="text-align:right;">
+                                <input type="submit" class="btn btn-primary mr-1 "
+                                 style="margin-right: 5px;" [disabled]="loading"
+                                    value="PROCEED TO PAY">
+                                <input type="reset" class="btn btn-secondary " (click)="onReset()" value="Cancel">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

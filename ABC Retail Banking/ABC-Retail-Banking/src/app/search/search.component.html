@@ -1,0 +1,66 @@
+<div class="mainbody container-fluid ">
+    <div class="row">
+        <div class="card" style="margin: 10px; "  #content id="content">
+            <div class="card-header" style="font-size: larger;font-weight: 400;">
+                Admin Search form
+            </div>
+            <div class="card-body">
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-5">
+                            <label>Search text:</label>
+                            <input class="form-control" formControlName="SearchName" type="text"
+                                [ngClass]="{ 'is-invalid':submitted &&  f.SearchName.errors }" required>
+                            <div *ngIf="submitted && f.SearchName.errors" class="invalid-feedback">
+                                <div *ngIf="f.SearchName.errors.required">Search text is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-5">
+                            <label>Select search criteria :</label>
+                            <select class="form-control"  formControlName="Criteria" name="Criteria" id="Criteria"
+                                [ngClass]="{ 'is-invalid': submitted && f.Criteria.errors}" required>
+                                <option disabled>Select your option</option>
+                                <option value="1">Account holder Name</option>
+                                <option value="2">Account Number</option>
+                                <option value="3">Client Name</option>
+                            </select>
+                            <div *ngIf="submitted && f.Criteria.errors" class="invalid-feedback">
+                                <div *ngIf="f.Criteria.errors.required">search criteria is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-2 position-relative">
+                            <input type="submit" class="btn btn-primary position-absolute bottom-0 start-0" value="Search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div [hidden]="!hideMe">
+            <table class="table table-fixed table-striped" style="border:1px black solid;">
+                <thead class="table-light">
+                    <tr>
+                        <th class="col-md-4">Serial Number</th>
+                        <th class="col-md-4">Account Primary Owner name</th>
+                        <th class="col-md-3">Account Number</th>
+                        <th class="col-md-3">Account Type</th>
+                        <th class="col-md-3">Balance</th>
+                        <th class="col-md-3">Address</th>
+                        <th class="col-md-3">Branch Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of result; let i = index">
+                        <td><label>{{i+1}}</label></td>
+                        <td><label>{{item.AccountPrimaryOwnername}}</label></td>
+                        <td><label>{{item.AccountNumber}}</label></td>
+                        <td><label>{{item.AccountType == '1' ? 'admin' : 'user'}}</label></td>
+                        <td><label>{{item.Balance | number:'1.2-2'}}</label></td>
+                        <td><label>{{item.Address}}</label></td>
+                        <td><label>{{item.BranchName}}</label></td>
+                    </tr>
+                </tbody>
+            </table><div class="col-md-12"> Download as
+            <button type="button" value="PDF" class="btn btn-primary" (click)="pdfDownload()">PDF</button></div></div>
+        </div>
+        
+    </div>
+</div>
