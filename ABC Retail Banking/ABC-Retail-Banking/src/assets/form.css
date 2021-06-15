@@ -5,6 +5,10 @@
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+input[type=submit]{
+background-color: brown !important;
+border-color: brown !important;
+}
 .alert{
   position: fixed !important;
 padding: 0px 0px 0px 0px !important;

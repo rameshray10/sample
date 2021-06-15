@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { first } from 'rxjs/operators';
 import { accountdetails } from 'src/app/models/accountdetails.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { BankingService } from 'src/app/services/banking.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class CustomerIdModelComponent implements OnInit {
   hideMe = false;
 
   constructor(public activeModal: NgbActiveModal,
-    private service: BankingService) { }
+    private service: BankingService, private authserve: AuthService) { }
 
   choice = new FormControl('', Validators.required);
 
@@ -27,6 +28,7 @@ export class CustomerIdModelComponent implements OnInit {
     this.hideMe = false;
   }
   searchCustName(custname: any) {
+    //let custinfo = this.authserve.currentUserValue;
     if (custname != undefined && custname != "") {
       this.service.Get_AccountDetailsbyName(custname)
         .pipe(first())

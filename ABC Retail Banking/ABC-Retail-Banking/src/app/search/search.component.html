@@ -20,9 +20,9 @@
                             <select class="form-control"  formControlName="Criteria" name="Criteria" id="Criteria"
                                 [ngClass]="{ 'is-invalid': submitted && f.Criteria.errors}" required>
                                 <option disabled>Select your option</option>
-                                <option value="1">Account holder Name</option>
-                                <option value="2">Account Number</option>
-                                <option value="3">Client Name</option>
+                                <option value="PrimaryAccountOwnerName">Account holder Name</option>
+                                <option value="AccountNumber">Account Number</option>
+                                <option value="CustomerId">Client Name</option>
                             </select>
                             <div *ngIf="submitted && f.Criteria.errors" class="invalid-feedback">
                                 <div *ngIf="f.Criteria.errors.required">search criteria is required</div>
@@ -50,7 +50,7 @@
                 <tbody>
                     <tr *ngFor="let item of result; let i = index">
                         <td><label>{{i+1}}</label></td>
-                        <td><label>{{item.AccountPrimaryOwnername}}</label></td>
+                        <td><label>{{item.PrimaryAccountOwnerName}}</label></td>
                         <td><label>{{item.AccountNumber}}</label></td>
                         <td><label>{{item.AccountType == '1' ? 'admin' : 'user'}}</label></td>
                         <td><label>{{item.Balance | number:'1.2-2'}}</label></td>
@@ -61,6 +61,6 @@
             </table><div class="col-md-12"> Download as
             <button type="button" value="PDF" class="btn btn-primary" (click)="pdfDownload()">PDF</button></div></div>
         </div>
-        
+
     </div>
 </div>

@@ -12,7 +12,7 @@ import { TYPE } from 'src/app/helpers/toastConstants';
 @Component({
   selector: 'app-detailedstatement',
   templateUrl: './detailedstatement.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class DetailedstatementComponent implements OnInit {
   @ViewChild('content') content: ElementRef = new ElementRef(null);
@@ -53,9 +53,9 @@ export class DetailedstatementComponent implements OnInit {
   constructor(
     private service: BankingService,
     private authserve: AuthService,
-    private toast: ToastService) {
+    private toast: ToastService
+  ) {
     this.customerDetail = this.authserve.currentUserValue;
-
   }
 
   ngOnInit(): void {
@@ -64,58 +64,65 @@ export class DetailedstatementComponent implements OnInit {
 
   getStatement(from: any, to: any, period: any) {
     if (this.radioSelected == undefined) {
-      this.toast.toast(TYPE.WARNING, false, "Select atleast one option");
-    }
-    else if (this.radioSelected == 'Tdate') {
+      this.toast.toast(TYPE.WARNING, false, 'Select atleast one option');
+    } else if (this.radioSelected == 'Tdate') {
+      if (from == "" || to == "")
+        return this.toast.toast(TYPE.WARNING, false, 'Select From and To Date');
       this.hideMe = true;
+      var fDate = new Date(from);
+      var tDate = new Date(to);
       //    this.rowData = this.service.getDateBetweenTransaction(+this.customerDetail.CustomerId, from, to);
-      this.service.getDateBetweenTransaction(+this.customerDetail.CustomerId, from, to)
+      this.service
+        .getPeriodTransaction(+this.customerDetail.CustomerId, fDate, tDate)
         .pipe(first())
         .subscribe((res) => {
           if (res.length > 0) {
             this.hideMe = true;
             this.transaction = res;
             this.BalanceAmt = res[0].CurrentBalance;
-          }
-          else {
+          } else {
             this.toast.toast(TYPE.INFO, false, 'No Results available!!');
           }
-        })
-    }
-    else {
-      period = (period == 'today') ? 24 : period;
-      //  this.rowData =this.service.getPeriodTransaction(+this.customerDetail.CustomerId, period);
-      this.service.getPeriodTransaction(+this.customerDetail.CustomerId, period)
+        });
+    } else {
+      period = period == 'today' ? 24 : period;
+      var isoDateString = new Date();
+      //this.rowData =this.service.getPeriodTransaction(+this.customerDetail.CustomerId, period);
+      this.service
+        .getPeriodTransaction(
+          +this.customerDetail.CustomerId,
+          isoDateString,
+          isoDateString
+        )
         .pipe(first())
         .subscribe((res) => {
           if (res.length > 0) {
             this.hideMe = true;
             this.BalanceAmt = res[0].CurrentBalance;
             this.transaction = res;
-          }else {
+          } else {
             this.toast.toast(TYPE.INFO, false, 'No Results available!!');
           }
-        })
+        });
     }
-
   }
   clearall() {
     this.hideMe = false;
   }
   ComingSoon(msg: string) {
-    this.toast.toast(TYPE.INFO, true, msg + "Coming Soon ...")
+    this.toast.toast(TYPE.INFO, true, msg + 'Coming Soon ...');
   }
   pdfDownload(): void {
     let content = this.content.nativeElement;
     var data = document.getElementById('content');
-    html2canvas(content).then(canvas => {
+    html2canvas(content).then((canvas) => {
       var imgWidth = 208;
-      var imgHeight = canvas.height * imgWidth / canvas.width;
-      const contentDataURL = canvas.toDataURL('image/png')
+      var imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const contentDataURL = canvas.toDataURL('image/png');
       let pdf = new jsPDF('p', 'mm', 'a4');
       var position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-      pdf.save('newPDF.pdf');
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('newPDF' + new Date() + '.pdf');
     });
   }
 }

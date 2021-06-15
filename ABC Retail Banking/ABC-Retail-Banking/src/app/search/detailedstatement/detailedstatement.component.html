@@ -56,7 +56,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="row col-md-12" #content id="content">
             <div class="col-md-4">
                 <button type="button" value="PDF" class="btn btn-secondary" (click)="clearall()">Clear</button>
@@ -85,6 +85,7 @@
                 <thead class="table-light">
                     <tr>
                         <th class="col-md-1">Serial Number</th>
+                        <th class="col-md-2">Transferd To</th>
                         <th class="col-md-2">Transaction Date</th>
                         <th class="col-md-1">Cheque number</th>
                         <th class="col-md-2">Transaction Remark</th>
@@ -96,14 +97,15 @@
                 <tbody>
                     <tr *ngFor="let item of transaction; let i = index">
                         <td><label name="id" id="id">{{i+1}}</label></td>
+                        <td><label name="TransID">{{item.TransferTo}}</label></td>
                         <td><label name="custometId" id="CustomerId" itemvalue.id="item.CustomerId">
                                 {{item.TransactionDate | date: 'd-M-y'}}</label></td>
                         <td><label name="customerName" id="CustNAme"
                                 *ngIf="item.ChecqueBookNumber  != 0">{{item.ChecqueBookNumber }}</label></td>
                         <td><label name="customerName" id="CustNAme">{{item.TransactionRemarks}}</label></td>
                         <td><label name="customerName" id="CustNAme"
-                                *ngIf="item.TransactionType == 2">{{item.TransactionAmount}}</label></td>
-                        <td><label name="customerName" id="CustNAme" *ngIf="item.TransactionType == 1">
+                                *ngIf="item.TransactionType == 1">{{item.TransactionAmount}}</label></td>
+                        <td><label name="customerName" id="CustNAme" *ngIf="item.TransactionType == 2">
                                 {{item.TransactionAmount}}</label></td>
                         <td><label name="customerName" id="CustNAme">{{item.CurrentBalance | number:'1.2-2'}}</label>
                         </td>

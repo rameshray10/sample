@@ -1,0 +1,249 @@
+{
+  "authUser": [
+    {
+      "id": 1,
+      "UserName": "Ramesh",
+      "upass": "ramesh",
+      "CustomerId": "98766789"
+    },
+    {
+      "id": 2,
+      "UserName": "root",
+      "upass": "root",
+      "CustomerId": "98766781"
+    }
+  ],
+  "accdet": [
+    {
+      "id": 1,
+      "AccountNumber": "0009876556789",
+      "CustomerId": "98766789",
+      "AccountTypeId": "10001",
+      "AccessTypeId": 1,
+      "PrimaryAccountOwnerName": "Ramesh",
+      "InitialBalance": "1000000",
+      "CheckingAcc": "0",
+      "CreatedBy": "ARamesh",
+      "CreatedOn": "2021-05-25T00:00:00",
+      "UpdatedBy": "",
+      "UpdatedOn": "2021-05-25T00:00:00",
+      "BranchId": 1,
+      "CustomerInfoId": 11,
+      "userDetId": 1
+    },
+    {
+      "id": 2,
+      "AccountNumber": "0009876556789",
+      "CustomerId": "98766781",
+      "AccountTypeId": "10001",
+      "AccessTypeId": 2,
+      "PrimaryAccountOwnerName": "Ramesh",
+      "InitialBalance": "1000000",
+      "CheckingAcc": "0",
+      "CreatedBy": "ARamesh",
+      "CreatedOn": "2021-05-25T00:00:00",
+      "UpdatedBy": "",
+      "UpdatedOn": "2021-05-25T00:00:00",
+      "BranchId": 1,
+      "CustomerInfoId": 11
+    }
+  ],
+  "brInfo": [
+    {
+      "Id": 1,
+      "BranchName": "Adyar",
+      "BranchAddress": "Adyar Chennai",
+      "BranchIfscCode": "MYOS009977"
+    }
+  ],
+  "custInfo": [
+    {
+      "Id": 11,
+      "UserName": "Ramesh",
+      "Password": "ramesh",
+      "CreatedBy": "ARamesh",
+      "CreatedOn": "2021-05-25T00:00:00",
+      "UpdatedBy": "",
+      "UpdatedOn": "2021-05-25T00:00:00",
+      "roleName": ""
+    }
+  ],
+  "tranDet": [
+    {
+      "Id": 1,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "1000",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 2,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "1500",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 3,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "2000",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 4,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "2500",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 5,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "3000",
+      "TransactionAmount": "1000",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 6,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "5000",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 7,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "6000",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    },
+    {
+      "Id": 8,
+      "CustomerId": "98766789",
+      "TransactionId": "",
+      "TransferTo": "",
+      "TransactUsing": "",
+      "TransactionType": "",
+      "TransactionDate": "2021-05-25T00:00:00",
+      "TransactionRemarks": "funds",
+      "TransactionAmount": "7000",
+      "FromAccount": "98766789",
+      "ToAccount": "98766781",
+      "TransactionStatus": "Success",
+      "ChecqueBookNumber": "0",
+      "CurrentBalance": "1000000"
+    }
+  ],
+  "userDet": [
+    {
+      "Id": 1,
+      "GuardianName": "Sathiyanarayanan",
+      "Address": "B1/757,1st street muthamizh nagar",
+      "State": "TamilNadu",
+      "City": "Chennai",
+      "PinCode": "600118",
+      "Country": "India",
+      "GovtIdNum": "Adfs34234",
+      "IdProff": "a",
+      "Title": "mr",
+      "FirstName": "Ramesh",
+      "LastName": "Sathiyanarayanan",
+      "Email": "ramesh@ramesh.com",
+      "Password": "123456",
+      "ActiveInd": true,
+      "BranchId": "1"
+    }
+  ],
+  "userInfo": [
+    {
+      "Id": 1,
+      "UserId": "",
+      "FirstName": "",
+      "LastName": "",
+      "EMail": "",
+      "Pannumber": "",
+      "AccountHolderType": ""
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-Ramesh",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -70,21 +70,21 @@ export class AccountOpeningComponent implements OnInit {
 
   onSubmit = () => {
     this.submitted = true;
-    
+
     // stop here if form is invalid
     if (this.profileForm.invalid) {
       return;
     }
-    
+
       this.loading = true;
       this.service.postAccountDetails(this.profileForm.value)
         .pipe(first())
         .subscribe(() => {
-          this.toast.toast(TYPE.SUCCESS, true,' Accoutn Created Successfully !!')
+          this.toast.toast(TYPE.SUCCESS, true,'Account has been Created Successfully !!')
           this.router.navigate(['/app/dashboard'], { relativeTo: this.route });
         })
         .add(() => this.loading = false);
-    
+
   }
 
   onReset() {
@@ -96,7 +96,7 @@ export class AccountOpeningComponent implements OnInit {
     this.modalOption.backdrop = 'static';
     this.modalOption.keyboard = false;
     const modalRef = this.modalService.open(CustomerIdModelComponent, this.modalOption);
-    
+
     from(modalRef.result).pipe(
       catchError(error => {
         this.toast.toast(TYPE.WARNING,true,error)

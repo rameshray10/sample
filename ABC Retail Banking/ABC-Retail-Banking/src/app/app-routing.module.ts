@@ -25,22 +25,42 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
       },
-      { path: "registration", component: RegistrationComponent }
-      , { path: "search", component: SearchComponent },
-      { path: "ministatement", component: MinistatementComponent, canActivate: [AuthGuard] },
-      { path: "detailedstatement", component: DetailedstatementComponent, canActivate: [AuthGuard] },
-      { path: "fundTransfer", component: FundtransferComponent, canActivate: [AuthGuard] },
-      { path: "header", component: HeaderComponent, canActivate: [AuthGuard] },
+      { path: 'registration', component: RegistrationComponent },
+      { path: 'search', component: SearchComponent },
       {
-        path: "accountOpening", component: AccountOpeningComponent,
+        path: 'ministatement',
+        component: MinistatementComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'detailedstatement',
+        component: DetailedstatementComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'fundTransfer',
+        component: FundtransferComponent,
+        canActivate: [AuthGuard],
+      },
+      { path: 'header', component: HeaderComponent, canActivate: [AuthGuard] },
+      {
+        path: 'accountOpening',
+        component: AccountOpeningComponent,
         canActivate: [RoleGuardService],
         data: {
-          expectedRole: 'admin'
-        }, children: [{ path: ':id', component: AccountOpeningComponent, canActivate: [AuthGuard] }]
-      }
-    ]
+          expectedRole: 'admin',
+        },
+        children: [
+          {
+            path: ':id',
+            component: AccountOpeningComponent,
+            canActivate: [AuthGuard],
+          },
+        ],
+      },
+    ],
   },
   {
     path: '',
@@ -48,15 +68,15 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent
-      }
-    ]
+        component: LoginComponent,
+      },
+    ],
   },
-  { path: "**", component: PageNotFoundComponent }];
+  { path: '**', component: PageNotFoundComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}

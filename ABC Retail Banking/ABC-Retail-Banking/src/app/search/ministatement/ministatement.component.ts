@@ -4,7 +4,7 @@ import { first } from 'rxjs/operators';
 import { CustomerInformation } from 'src/app/models/customerInfo.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BankingService } from 'src/app/services/banking.service';
-import { jsPDF }  from 'jspdf';  
+import { jsPDF }  from 'jspdf';
 import html2canvas from 'html2canvas';
 import { TYPE } from 'src/app/helpers/toastConstants';
 import { ToastService } from 'src/app/services/toast.service';
@@ -15,7 +15,8 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: []
 })
 export class MinistatementComponent implements OnInit {
-  @ViewChild('content') content:ElementRef=new ElementRef(null);
+  @ViewChild('content')
+  content:ElementRef=new ElementRef(null);
   accountDetails:any;
   transaction:any;
   BalanceAmt:any;
@@ -31,7 +32,7 @@ export class MinistatementComponent implements OnInit {
     private authserve :AuthService,
     private toast:ToastService) {
      this.customerDetail =  this.authserve.currentUserValue;
-     
+
     }
 
   ngOnInit(): void {
@@ -52,9 +53,9 @@ export class MinistatementComponent implements OnInit {
       let pdf = new jsPDF('p', 'mm', 'a4');
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-      pdf.save('newPDF.pdf');
+      pdf.save('newPDF' + this.TDate + '.pdf');
     });
-  }  
+  }
   GoToDetailedStatement(){
     this.router.navigateByUrl("app/detailedstatement")
   }

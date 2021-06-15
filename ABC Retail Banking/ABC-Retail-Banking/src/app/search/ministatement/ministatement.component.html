@@ -1,5 +1,5 @@
-<div class="mainbody container-fluid ">
-    <div class="align-items-center" #content id="content">
+<div class="mainbody container-fluid "  #content id="content">
+    <div class="align-items-center">
         <div class="card-header">
             <strong> Mini Statement for {{customerDetail.UserName}} ( {{customerDetail.CustomerId}} )</strong>
         </div>
@@ -8,7 +8,7 @@
             <tbody>
                 <tr>
                     <td style="font-weight: bold;"> Balance details as on </td>
-                    <td> {{TDate | date: 'fullDate' }}</td>
+                    <td> {{TDate | date: 'd-M-y'}}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold;"> Available Balance INR </td>
@@ -40,7 +40,7 @@
 
 
             <table class="table table-fixed table-striped" style="border:1px black solid;">
-                <thead class="table-light">
+                <thead >
                     <tr>
                         <th class="col-md-4">Serial Number</th>
                         <th class="col-md-4">Transaction Date</th>

@@ -19,18 +19,18 @@ export class LoginComponent implements OnInit {
   loginname: string = "";
   loading = false;
   loginpassword: string = "";
-  products: CustomerInformation[] = [];
+  // products: CustomerInformation[] = [];
   destroy$: Subject<CustomerInformation[]> = new Subject<CustomerInformation[]>();
   submitted: boolean = false;
 
-  constructor(private dataService: BankingService, private auth: AuthService,
+  constructor(private auth: AuthService,
     private toast: ToastService) {
   }
   ngOnInit() {
-    this.dataService.getCustomerInfo().pipe(takeUntil(this.destroy$))
-      .subscribe((data: CustomerInformation[]) => {
-        this.products = data;
-      })
+    // this.dataService.getCustomerInfo().pipe(takeUntil(this.destroy$))
+    //   .subscribe((data: CustomerInformation[]) => {
+    //     this.products = data;
+    //   })
 
   }
   loginForm = new FormGroup({
@@ -57,9 +57,9 @@ export class LoginComponent implements OnInit {
     this.loading = true;
       this.auth.newlogin(this.loginForm.value);
       this.loading = false;
-    
+
   };
-  gotoForgotpassword() { //his.router.navigate(['/registration']); 
+  gotoForgotpassword() { //his.router.navigate(['/registration']);
     this.toast.toast(TYPE.ERROR, false, 'Bad Credentials please try again');
   }
 

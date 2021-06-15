@@ -6,38 +6,34 @@ import { BankingService } from '../services/banking.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class HeaderComponent implements OnInit {
   isNavbarCollapsed = true;
-  customerId: string = "";
-  username: string = "";
+  customerId: string = '';
+  username: string = '';
+  rolename: string = '';
 
-  constructor(
-    private dataService: BankingService,
-  
-    private route: ActivatedRoute,
-    private router: Router,
-    private authservice:AuthService) {
-      let x =   authservice.currentUserValue;
-      
-      this.customerId = x.CustomerId;
-      this.username = x.UserName;
-    if (this.username == "" || this.username==undefined) { 
-      this.router.navigateByUrl("/login"); 
+  constructor(private router: Router, private authservice: AuthService) {
+    let x = authservice.currentUserValue;
+
+    this.customerId = x.CustomerId;
+    this.username = x.UserName;
+    this.rolename = x.roleName;
+    if (this.username == '' || this.username == undefined) {
+      this.router.navigateByUrl('/login');
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   logout() {
-    
     this.authservice.logout();
     this.router.navigate(['/login']);
-}
-navRegistration(){
-  const navigationExtras: NavigationExtras =
-    {state: {example: this.customerId}};
-      this.router.navigate(['app/registration'], navigationExtras);
-}
+  }
+  navRegistration() {
+    const navigationExtras: NavigationExtras = {
+      state: { example: this.customerId },
+    };
+    this.router.navigate(['app/registration'], navigationExtras);
+  }
 }

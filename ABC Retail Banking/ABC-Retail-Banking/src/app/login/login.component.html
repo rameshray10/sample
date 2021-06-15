@@ -6,14 +6,14 @@
             <img src="../../assets/login.png" id="icon" alt="User Icon" height="100" width="50" />
           </div>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <input type="text" id="login" 
+            <input type="text" id="login"
             name="usr" placeholder="CustomerId" required
             [ngClass]="{ 'is-invalid': f.loginname.errors }"
             formControlName="loginname">
             <div *ngIf="submitted && f.loginname.errors" class="invalid-feedback">
                 <div *ngIf="f.loginname.errors.required">CustomerId is required</div>
             </div>
-            <input type="password" id="password" class="bgWhite" 
+            <input type="password" id="MYPWD" class="bgWhite"
              name="loginpassword"
               placeholder="password" required formControlName="loginpassword"
               [ngClass]="{ 'is-invalid': f.loginpassword.errors }"
@@ -21,7 +21,7 @@
              <div *ngIf="submitted && f.loginpassword.errors" class="invalid-feedback">
                <div *ngIf="f.loginpassword.errors.required">password is required</div>
            </div>
-           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> 
+           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             <input type="submit" [disabled]="loading"  value="Log In">
           </form>
           <div id="formFooter">
@@ -35,11 +35,11 @@
         </div>
       </div>
     </div>
-    
+
     <!-- <div class="table-responsive">
       <table class="table table-bordered mx-auto w-auto" style="background-color: aliceblue;">
         <thead class="thead-dark">
-          
+
           <th class="w-33 p-3" scope="col">S.no</th>
           <th class="w-33 p-3" scope="col">Login Name</th>
           <th class="w-33 p-3" scope="col">Password</th>
@@ -57,4 +57,3 @@
       </table>
     </div> -->
     </div>
-    

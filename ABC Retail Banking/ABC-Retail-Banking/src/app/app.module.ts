@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './login/dashboard/dashboard.component';
 
-
 import { SearchComponent } from './search/search.component';
 import { MinistatementComponent } from './search/ministatement/ministatement.component';
 import { DetailedstatementComponent } from './search/detailedstatement/detailedstatement.component';
@@ -26,6 +25,8 @@ import { LoginLayoutComponent } from './routeLayout/login-layout/login-layout.co
 import { HomeLayoutComponent } from './routeLayout/home-layout/home-layout.component';
 import { HomeComponent } from './home/home.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { NgImageSliderModule } from "ng-image-slider";
+import { SliderComponent } from './header/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AgGridModule } from 'ag-grid-angular';
     FundtransferComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
-    HomeComponent
+    HomeComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
+    NgImageSliderModule,
     AgGridModule.withComponents([])
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],

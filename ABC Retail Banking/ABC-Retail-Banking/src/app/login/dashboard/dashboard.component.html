@@ -3,7 +3,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-5"></div>
          <div class="col-md-3"><!--CustomerId : {{customerId}} -->
-            <div>{{rxTime | date: 'fullDate' }} {{ rxTime | date: 'hh:mm:ss a' }}</div>
+            <div>{{ rxTime | date: 'fullDate' }} {{ rxTime | date: 'hh:mm:ss a' }}</div>
         </div>
     </div>
     <div class="container-fluid row">
@@ -40,7 +40,7 @@
                 text-align: center;">
                     <label for="" style="font-size: smaller;"> <strong> Spin a wheel </strong></label>
                     <div>
-                        <a (click)="ComingSoon(' ')" style="font-size: x-small;"> 
+                        <a (click)="ComingSoon(' ')" style="font-size: x-small;">
                             Win Upto
                             Rs.50,00,000 </a>
                     </div>
@@ -89,15 +89,17 @@
             </div>
             <div class="row">
                 <div class="col-md-3 adv" >
-                    <a routerLink="/app/ministatement"> <strong> View Bank
+                    <a routerLink="/app/ministatement" style="color: white;
+                    text-decoration: none;"> <strong> View Bank
                             Statement</strong></a>
                 </div>
                 <div class="col-md-3 adv" >
-                    <a (click)="ComingSoon('Recharge option is ')">
+                    <a (click)="ComingSoon('Recharge option is ')" >
                         <strong>Recharge now</strong> </a>
                 </div>
                 <div class="col-md-3 adv">
-                    <a routerLink="/app/fundTransfer">
+                    <a routerLink="/app/fundTransfer" style="color: white;
+                    text-decoration: none;">
                         <strong>Fund Transfer </strong> </a>
                 </div>
                 <div class="col-md-3 adv">

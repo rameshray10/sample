@@ -10,7 +10,7 @@ import { ToastService } from './toast.service';
   providedIn: 'root'
 })
 export class RoleGuardService implements CanActivate  {
-  constructor(public auth: AuthService, public service:BankingService, 
+  constructor(public auth: AuthService, public service:BankingService,
     public router: Router,private toast:ToastService) {}
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
@@ -19,6 +19,7 @@ export class RoleGuardService implements CanActivate  {
       tokenPayloadold.roleName !== expectedRole
     ) {
      this.toast.toast(TYPE.WARNING,true,'You are not an authorized user !!!');
+     this.router.navigate(["app/dashboard"]);
       return false;
     }
     return true;

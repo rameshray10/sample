@@ -83,25 +83,25 @@ export class RegistrationComponent implements OnInit {
   }
   editUserInfo() {
     this.isControlVisible = false;
-
     let custinfo = this.authserve.currentUserValue;
-    this.service.GetUserById(custinfo.UserName)
+    this.service.GetUserById(custinfo.id)
       .pipe(first())
       .subscribe(x =>
         this.profileForm.patchValue({
-          GuardianName: x.GuardianName,
-          Address: x.Address,
-          State: x.State,
-          City: x.City,
-          PinCode: x.PinCode,
-          Country: x.Country,
-          GovtIdNum: x.GovtIdNum,
-          IdProff: x.IdProff,
-          Title: x.Title,
-          FirstName: x.FirstName,
-          LastName: x.LastName,
-          Email: x.Email,
+          GuardianName: x[0].GuardianName,
+          Address: x[0].Address,
+          State: x[0].State,
+          City: x[0].City,
+          PinCode: x[0].PinCode,
+          Country: x[0].Country,
+          GovtIdNum: x[0].GovtIdNum,
+          IdProff: x[0].IdProff,
+          Title: x[0].Title,
+          FirstName: x[0].FirstName,
+          LastName: x[0].LastName,
+          Email: x[0].Email,
         })
+
       )
   }
 
@@ -136,7 +136,8 @@ export class RegistrationComponent implements OnInit {
       .add(() => this.loading = false);
   }
   updateUser() {
-    this.service.putUserDetails(this.id, this.profileForm.value)
+    let custinfo = this.authserve.currentUserValue;
+    this.service.putUserDetails(custinfo.id, this.profileForm.value)
       .pipe(first())
       .subscribe(() => {
         this.toast.toast(TYPE.SUCCESS, true, 'User Updated Successfully !!');
